@@ -24,7 +24,9 @@
 
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('client/lib/animate/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('client/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('client/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('client/lib/owl/owl.carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('client/lib/owl/owl.theme.css') }}" rel="stylesheet">
     <link href="{{ asset('client/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
@@ -73,7 +75,9 @@
     <script src="{{ asset('client/lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('client/lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('client/lib/counterup/counterup.min.js') }}"></script>
-    <script src="{{ asset('client/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    {{-- <script src="{{ asset('client/lib/owlcarousel/owl.carousel.min.js') }}"></script> --}}
+    <script src="{{ asset('client/lib/owl/owl.carousel.js') }}"></script>
+
     <script src="{{ asset('client/lib/isotope/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('client/lib/lightbox/js/lightbox.min.js') }}"></script>
 

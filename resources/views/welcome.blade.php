@@ -12,7 +12,9 @@
                         Home for Freelancers and Job Seekers
                     </h1>
                     <p class="text-white pb-3 animated slideInDown">JharNirbhar provides Inteligents solutions &
-                        Fullfill the needs.<br>Looking to elevate your home? Join Jharnirbhar for reliable, top-notch services that turn your house into a haven. Explore our offerings and start transforming your living space today</p>
+                        Fullfill the needs.<br>Looking to elevate your home? Join Jharnirbhar for reliable, top-notch
+                        services that turn your house into a haven. Explore our offerings and start transforming your living
+                        space today</p>
                     <a href="{{ url('/register') }}"
                         class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Get Started
                     </a>
@@ -44,7 +46,7 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <p class="section-title text-secondary justify-content-center mb-5"><span></span>Categories<span></span></p>
-            <div class="owl-carousel p-3">
+            <div id="owl-demo" class="owl-carousel owl-theme">
                 @foreach ($categories as $category)
                     <a class="category-container p-3 mx-2 my-3" href="{{ url('/category/' . $category->slug) }}">
                         <img src="{{ asset('uploads/category/' . $category->image) }}" />
@@ -128,10 +130,28 @@
     <!-- Team End -->
 @endsection
 
-@section('scripts')
+{{-- @section('scripts')
     <script>
         $(document).ready(function() {
             $(".owl-carousel").owlCarousel();
+        });
+    </script>
+@endsection --}}
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+
+            $("#owl-demo").owlCarousel({
+
+                autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+                items: 3,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [979, 3]
+
+            });
+
         });
     </script>
 @endsection

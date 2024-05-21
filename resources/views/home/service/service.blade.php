@@ -54,8 +54,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if ($freelancer_services)
-                                        @foreach ($freelancer_services->freelancers as $freelancer)
+                                    @if ($freelancers)
+                                        @foreach ($freelancers as $freelancer)
                                             <tr>
                                                 <td>{{$freelancer->name}}</td>
                                                 <td>

@@ -14,8 +14,8 @@
                         <div class="form-floating mb-4">
                             <select class="form-control" name="role">
                                 <option value="0">Freelancer</option>
-                                <option value="3">Job Seeker</option>
-                                <option value="2">Job Provider</option>
+                                {{-- <option value="3">Job Seeker</option>
+                                <option value="2">Job Provider</option> --}}
                             </select>
                             <label for="role">Select User Type</label>
                         </div>

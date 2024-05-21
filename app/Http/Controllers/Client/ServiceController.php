@@ -27,8 +27,12 @@ class ServiceController extends Controller
     {
         $category = Category::where('slug', $category_slug)->first();
         $service = Service::where('slug', $service_slug)->first();
-        $freelancer_services = FreelancerService::where('service_id', $service->id)->with('freelancers')->first();
-        return view("home.service.service", compact("category", "service", "freelancer_services"));
+        // $freelancer_services = FreelancerService::where('service_id', $service->id)->with('freelancers')->get();
+        $freelancers = Freelancer::join('freelancer_services', 'freelancers.id', '=', 'freelancer_services.freelancer_id')
+                         ->where('freelancer_services.service_id', $service->id)
+                         ->select('freelancers.*')
+                         ->get();
+        return view("home.service.service", compact("category", "service", "freelancers"));
     }
 
     public function book($category_slug, $service_slug, $freelancer_id)

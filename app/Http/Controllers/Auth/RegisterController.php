@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -73,6 +74,15 @@ class RegisterController extends Controller
     }
 
     public function registered(Request $request, $user){
+
+        $isEmailVerified = Auth::user()->email_verified_at;
+        if(is_null($isEmailVerified)){
+            return redirect()->route('verification.notice')->with('message', ' Please check your email account and verify your account to access all .');
+        }
+        else{
+            return redirect('/freelancer/register')->with('message', 'Login successful!');
+        }
+
         if(auth()->user()->role=="1"){
             return redirect("/admin/dashboard");
         }

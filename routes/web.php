@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 Auth::routes();
 
+Route::get('/email/verify', [App\Http\Controllers\Email\EmailVerificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [App\Http\Controllers\Email\EmailVerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::post('/email/verification-notification', [App\Http\Controllers\Email\EmailVerificationController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
+
+
 Route::get('/', [App\Http\Controllers\Client\HomeController::class, 'index']);
 Route::get('/about', [App\Http\Controllers\Client\HomeController::class, 'about']);
 Route::get('/contact', [App\Http\Controllers\Client\HomeController::class, 'contact']);
@@ -21,7 +26,7 @@ Route::get('/service/request/call', [App\Http\Controllers\Client\AppointmentCont
 Route::post('/service/request/call', [App\Http\Controllers\Client\AppointmentController::class, 'store']);
 
 // Freelance Routes
-Route::prefix('freelancer')->middleware(['auth'])->group(function () {
+Route::prefix('freelancer')->middleware(['auth', 'email-verify'])->group(function () {
     Route::get('/register', [App\Http\Controllers\Freelancer\FreelancerController::class, 'register']);
     Route::post('/register', [App\Http\Controllers\Freelancer\FreelancerController::class, 'store']);
     Route::get('/dashboard', [App\Http\Controllers\Freelancer\FreelancerController::class, 'index']);
@@ -35,7 +40,7 @@ Route::prefix('freelancer')->middleware(['auth'])->group(function () {
 
 
 // ADMIN ROUTES
-Route::prefix('admin')->middleware(['auth'])->group(function () {
+Route::prefix('admin')->middleware(['auth','email-verify'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
     Route::get('/profile', [App\Http\Controllers\Admin\DashboardController::class, 'profile']);
 
