@@ -35,10 +35,10 @@
                             <td>{{ $appointment->service->title }}</td>
                             <td>{{ $appointment->problem }}</td>
                             <td>
-                                <button class="btn btn-info btn-edit" type="button" dataappointment="{{$appointment->id}}" data-toggle="modal" data-target="appointmentEditModal"><i
+                                {{-- <button class="btn btn-info btn-edit" type="button" dataappointment="{{$appointment->id}}" data-toggle="modal" data-target="appointmentEditModal"><i
                                     class="fas fa-edit"></i></button>
                                 <a href="{{ url('admin/appointment/' . $appointment->id . '/delete') }}" class="btn btn-danger"><i
-                                        class="fas fa-trash"></i></a>
+                                        class="fas fa-trash"></i></a> --}}
                             </td>
                         </tr>
                     @endforeach

@@ -31,6 +31,8 @@ class FreelancerController extends Controller
         }
     }
 
+    
+
     public function register(){
         $categories = Category::all();
         $freelancer = Freelancer::where('user_id', auth()->user()->id)->get();
@@ -94,5 +96,9 @@ class FreelancerController extends Controller
         }
 
         return redirect ('/freelancer/dashboard');
+    }
+    public function get_new_captcha()
+    {
+        return response()->json(['captcha' => captcha_img()]);
     }
 }

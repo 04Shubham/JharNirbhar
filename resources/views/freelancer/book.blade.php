@@ -48,22 +48,25 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{ url('/service/request/call') }}" method="post">
+                <form action="{{ url('/freelancer/request/call') }}" method="post">
                     @csrf
-                    <input type="hidden" name="freelancer_id" value="{{$freelancer->id}}">
+                    <input type="hidden" name="freelancer_id" value="{{ $freelancer->id }}">
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <div class="card card-body">
                                 <h3 class="h3 text-secondary mb-3">Primary Details</h3>
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" name="name" placeholder="Full Name">
+                                    <input class="form-control" type="text" name="name" placeholder="Full Name"
+                                        required>
                                     <label for="name">Full Name</label>
                                 </div>
                                 <div class="form-group mt-3">
                                     <label for="category">Category</label>
                                     <select name="category_id" id="category" class="form-control">
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" {{$category->slug == $category_slug ? "selected" : ""}}>{{ $category->title }}</option>
+                                            <option value="{{ $category->id }}"
+                                                {{ $category->slug == $category_slug ? 'selected' : '' }}>
+                                                {{ $category->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -73,8 +76,9 @@
                                     </select>
                                 </div>
                                 <div class="form-floating mt-3">
-                                    <textarea class="form-control" type="text" name="problem" placeholder="Describe Problem" style="height: 100px;"></textarea>
-                                    <label for="problem">Describe Problem</label>
+                                    <textarea class="form-control" type="text" name="problem" placeholder="Describe Problem" required
+                                        style="height: 100px;"></textarea>
+                                    <label for="problem">Describe</label>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +86,8 @@
                             <div class="card card-body">
                                 <h3 class="h3 text-secondary mb-3">Contact Details</h3>
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" name="mobile" placeholder="Mobile Number">
+                                    <input class="form-control" type="text" name="mobile" placeholder="Mobile Number"
+                                        required min="10" max="10">
                                     <label for="contact">Mobile Number</label>
                                 </div>
                                 <div class="row">
@@ -100,7 +105,7 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group mt-3">
                                             <label for="district">District</label>
-                                            <select name="district_code" id="district" class="form-control">
+                                            <select name="district_code" id="district" required class="form-control">
                                             </select>
                                         </div>
                                     </div>
@@ -109,20 +114,20 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group mt-3">
                                             <label for="city">City</label>
-                                            <select name="city_code" id="city" class="form-control">
+                                            <select name="city_code" id="city" required class="form-control">
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group mt-3">
                                             <label for="village">Village</label>
-                                            <select name="village_code" id="village" class="form-control">
+                                            <select name="village_code" id="village" required class="form-control">
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-floating mt-3">
-                                    <textarea class="form-control" type="text" name="address" placeholder="Address" style="height: 100px;"></textarea>
+                                    <textarea class="form-control" type="text" name="address" placeholder="Address" required style="height: 100px;"></textarea>
                                     <label for="address">Address</label>
                                 </div>
                             </div>
@@ -130,7 +135,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-2">
-                            <button type="submit" class="btn btn-primary px-4 py-2">Submit</button>
+                            <button type="submit" class="btn btn-primary text-end px-4 py-2">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -157,10 +162,11 @@
                     url: 'http://localhost:8000/api/service/' + categoryId,
                     type: 'GET',
                     success: function(response) {
-                        var service_slug = "{{$service_slug}}"; 
+                        var service_slug = "{{ $service_slug }}";
                         var options = '<option value="">Select a Service</option>';
                         $.each(response, function(key, value) {
-                            options += '<option value="' + value.id + '"' + (value.slug == service_slug ? "selected" : "") + '>' + value.title +
+                            options += '<option value="' + value.id + '"' + (value.slug ==
+                                    service_slug ? "selected" : "") + '>' + value.title +
                                 '</option>';
                         });
                         $('#service').html(options);

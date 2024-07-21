@@ -68,4 +68,8 @@ class LoginController extends Controller
             return redirect("/freelancer/register");
         }
     }
+    public function get_new_captcha()
+    {
+        return response()->json(['captcha' => captcha_img()]);
+    }
 }

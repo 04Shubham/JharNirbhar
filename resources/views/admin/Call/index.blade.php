@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Freelancer')
+@section('title', 'Call-Request')
 
 @section('styles')
     <!-- Custom styles for this page -->
@@ -9,7 +9,7 @@
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Freelancer Table</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Call Reqest Table</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -18,26 +18,23 @@
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Company Name</th>
                         <th>Mobile</th>
-                        <th>Id Proof</th>
-                        <th>Experience</th>
-                        <th>Profile Photo</th>
+                        <th>Problem</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($freelancers as $freelancer)
+                    @foreach ($calls as $call)
                         <tr>
-                            <td>{{$freelancer->id}}</td>
-                            <td>{{$freelancer->name}}</td>
-                            <td>{{$freelancer->company}}</td>
-                            <td>{{$freelancer->mobile}}</td>
-                            <td><img src="{{asset('uploads/documents/'.$freelancer->id_proof)}}" alt="" height="32"></td>
-                            <td>{{$freelancer->expirience}}</td>
-                            <td><img src="{{asset('uploads/freelancer/'.$freelancer->image)}}" alt="" height="32"></td>
+                            <td>{{ $call->id }}</td>
+                            <td>{{ $call->name }}</td>
+                            <td>{{ $call->mobile }}</td>
+                            <td>{{ $call->problem }}</td>
                             <td>
-
+                                {{-- <button class="btn btn-info btn-edit" type="button" datacontact="{{$contact->id}}" data-toggle="modal" data-target="contactEditModal"><i
+                                    class="fas fa-edit"></i></button>
+                                <a href="{{ url('admin/contact/' . $contact->id . '/delete') }}" class="btn btn-danger"><i
+                                        class="fas fa-trash"></i></a> --}}
                             </td>
                         </tr>
                     @endforeach

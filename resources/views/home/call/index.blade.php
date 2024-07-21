@@ -27,7 +27,7 @@
             @endif
 
             <div class="container-fluid">
-                <form action="{{url('/service/request/call')}}" method="post">
+                <form action="{{ url('/service/request/call') }}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -35,12 +35,13 @@
                                 <div class="card-body">
                                     <h3 class="h3 text-secondary mb-3">Primary Details</h3>
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" name="name" placeholder="Full Name">
+                                        <input class="form-control" type="text" name="name" placeholder="Full Name"
+                                            required>
                                         <label for="name">Full Name</label>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="category">Category</label>
-                                        <select name="category_id" id="category" class="form-control">
+                                        <select name="category_id" id="category" class="form-control" required>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                                             @endforeach
@@ -48,11 +49,12 @@
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="service">Service</label>
-                                        <select name="service_id" id="service" class="form-control">
+                                        <select name="service_id" id="service" class="form-control" required>
                                         </select>
                                     </div>
                                     <div class="form-floating mt-3">
-                                        <textarea class="form-control" type="text" name="problem" placeholder="Describe Problem" style="height: 100px;"></textarea>
+                                        <textarea class="form-control" type="text" name="problem" placeholder="Describe Problem" style="height: 100px;"
+                                            required></textarea>
                                         <label for="problem">Describe Problem</label>
                                     </div>
                                 </div>
@@ -64,14 +66,14 @@
                                     <h3 class="h3 text-secondary mb-3">Contact Details</h3>
                                     <div class="form-floating">
                                         <input class="form-control" type="text" name="mobile"
-                                            placeholder="Mobile Number">
+                                            placeholder="Mobile Number" required>
                                         <label for="contact">Mobile Number</label>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6">
                                             <div class="form-group mt-3">
                                                 <label for="state">State</label>
-                                                <select name="state_code" id="state" class="form-control">
+                                                <select name="state_code" id="state" class="form-control" required>
                                                     @foreach ($states as $state)
                                                         <option value="{{ $state->state_code }}">{{ $state->state_name }}
                                                         </option>
@@ -82,7 +84,7 @@
                                         <div class="col-sm-12 col-md-6">
                                             <div class="form-group mt-3">
                                                 <label for="district">District</label>
-                                                <select name="district_code" id="district" class="form-control">
+                                                <select name="district_code" id="district" class="form-control" required>
                                                 </select>
                                             </div>
                                         </div>
@@ -91,20 +93,20 @@
                                         <div class="col-sm-12 col-md-6">
                                             <div class="form-group mt-3">
                                                 <label for="city">City</label>
-                                                <select name="city_code" id="city" class="form-control">
+                                                <select name="city_code" id="city" class="form-control" required>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6">
                                             <div class="form-group mt-3">
                                                 <label for="village">Village</label>
-                                                <select name="village_code" id="village" class="form-control">
+                                                <select name="village_code" id="village" class="form-control" required>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-floating mt-3">
-                                        <textarea class="form-control" type="text" name="address" placeholder="Address" style="height: 100px;"></textarea>
+                                        <textarea class="form-control" type="text" name="address" placeholder="Address" style="height: 100px;" required></textarea>
                                         <label for="address">Address</label>
                                     </div>
                                 </div>
@@ -112,13 +114,28 @@
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-2">
-                            <button type="submit" class="btn btn-primary px-4 py-2">Submit</button>
+                        <div class="col-3">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="captcha" placeholder="Captcha" required>
+                                <label for="captcha">Captcha</label>
+                                @error('captcha')
+                                    <span class="text-danger">
+                                        *{{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class=" col-md-3 mb-2">
+                            <span class="rounded captcha-image">{!! Captcha::img() !!}</span>
                         </div>
                     </div>
-                </form>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary px-4 py-2">Submit</button>
+                    </div>
             </div>
+            </form>
         </div>
+    </div>
     </div>
 @endsection
 
@@ -135,14 +152,15 @@
                 populateServices(categoryId);
             });
 
-            function populateServices(categoryId){
+            function populateServices(categoryId) {
                 $.ajax({
                     url: 'http://localhost:8000/api/service/' + categoryId,
                     type: 'GET',
                     success: function(response) {
                         var options = '<option value="">Select a Service</option>';
                         $.each(response, function(key, value) {
-                            options += '<option value="' + value.id + '">' + value.title + '</option>';
+                            options += '<option value="' + value.id + '">' + value.title +
+                                '</option>';
                             service.html(options);
                         });
                     },

@@ -23,15 +23,15 @@
                 <div class="modal-body">
                     <div class="form-group mb-3">
                         <label for="">Title</label>
-                        <input class="form-control" type="text" name="title">
+                        <input class="form-control" type="text" name="title" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="">Description</label>
-                        <input class="form-control" type="text" name="description">
+                        <input class="form-control" type="text" name="description" required>
                     </div>
                     <div class="form-group">
                         <label for="">Image</label>
-                        <input class="form-control" type="file" name="image">
+                        <input class="form-control" type="file" name="image" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -56,15 +56,15 @@
                 <div class="modal-body">
                     <div class="form-group mb-3">
                         <label for="">Title</label>
-                        <input class="form-control" type="text" name="title">
+                        <input class="form-control" type="text" name="title" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="">Description</label>
-                        <input class="form-control" type="text" name="description">
+                        <input class="form-control" type="text" name="description" required>
                     </div>
                     <div class="form-group">
                         <label for="">Image</label>
-                        <input class="form-control" type="file" name="image">
+                        <input class="form-control" type="file" name="image" required>
                     </div>
                 </div>
                 <div class="modal-footer">

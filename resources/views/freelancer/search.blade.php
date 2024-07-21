@@ -39,12 +39,12 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <select name="category" class="form-control" id="categoryDropDown">
+                                <select name="category" class="form-control" id="categoryDropDown" required>
                                     <option value="0">Select a category</option>
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <select name="service" class="form-control" id="serviceDropDown">
+                                <select name="service" class="form-control" id="serviceDropDown" required>
                                     <option value="0">Select a service</option>
                                 </select>
                             </div>

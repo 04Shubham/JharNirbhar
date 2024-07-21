@@ -18,8 +18,8 @@
                     <a href="{{ url('/register') }}"
                         class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Get Started
                     </a>
-                    <a href="{{ url('/contact') }}"
-                        class="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">ContactUs</a>
+                    {{-- <a href="{{ url('/contact') }}"
+                        class="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">ContactUs</a> --}}
                 </div>
                 <div class="col-lg-6 text-center text-lg-start">
                     <img class="img-fluid animated zoomIn rounded-xl" src="{{ asset('client/img/hero.png') }}"
@@ -43,12 +43,12 @@
 
 
 @section('content')
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid py-3 wow fadeInUp" data-wow-delay="0.10s">
         <div class="container">
             <p class="section-title text-secondary justify-content-center mb-5"><span></span>Categories<span></span></p>
             <div id="owl-demo" class="owl-carousel owl-theme">
                 @foreach ($categories as $category)
-                    <a class="category-container p-3 mx-2 my-3" href="{{ url('/category/' . $category->slug) }}">
+                    <a class="category-container p-1 mx-2 my-3" href="{{ url('/category/' . $category->slug) }}">
                         <img src="{{ asset('uploads/category/' . $category->image) }}" />
                         <h3>
                             {{ $category->title }}
@@ -98,7 +98,7 @@
                                 alt="">
                             <h5>SHUBHAM KUMAR</h5>
                             <span>CEO & Founder</span>
-                            <span>(Web Designer)</span>
+                            {{-- <span>(Web Designer)</span> --}}
                         </div>
                         <div class="d-flex justify-content-center p-4">
                             <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -111,7 +111,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item bg-light rounded">
                         <div class="text-center border-bottom p-4">
-                            <img class="img-fluid rounded-circle mb-4" src="{{ asset('client/img/team-3.jpg') }}"
+                            <img class="img-fluid rounded-circle mb-4" src="{{ asset('client/img/team-2.jpg') }}"
                                 alt="">
                             <h5>KRISHNA KUMAR</h5>
                             <span>SEO Expert</span>

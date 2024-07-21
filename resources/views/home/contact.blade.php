@@ -35,36 +35,50 @@
                                         <div class="col-12">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" name="name"
-                                                    placeholder="Your Name">
+                                                    placeholder="Your Name" required>
                                                 <label for="name">Your Name</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <input type="email" class="form-control" name="email"
-                                                    placeholder="Your Email">
+                                                    placeholder="Your Email" required>
                                                 <label for="email">Your Email</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" name="phone"
-                                                    placeholder="Your Phone">
+                                                    placeholder="Your Phone" required>
                                                 <label for="phone">Your Phone</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" name="subject"
-                                                    placeholder="Subject">
+                                                    placeholder="Subject" required>
                                                 <label for="subject">Subject</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Leave a message here" name="message" style="height: 150px"></textarea>
+                                                <textarea class="form-control" placeholder="Leave a message here" name="message" style="height: 150px" required></textarea>
                                                 <label for="message">Message</label>
                                             </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" name="captcha" placeholder="Captcha" required>
+                                                <label for="captcha">Captcha</label>
+                                                @error('captcha')
+                                                    <span class="text-danger">
+                                                        *{{ $message }}
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class=" col-md-3 mb-2">
+                                            <span class="rounded captcha-image">{!! Captcha::img() !!}</span>
                                         </div>
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>

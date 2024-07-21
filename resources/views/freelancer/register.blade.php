@@ -27,7 +27,7 @@
             @endif
 
             <div class="container-fluid">
-                <form action="{{url('/freelancer/register')}}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('/freelancer/register') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -35,51 +35,57 @@
                                 <div class="card-body">
                                     <h3 class="h3 text-secondary mb-3">Primary Details</h3>
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" name="name" placeholder="Full Name">
+                                        <input class="form-control" type="text" name="name" placeholder="Full Name" required>
                                         <label for="name">Full Name</label>
                                     </div>
                                     <div class="form-floating mt-3">
-                                        <input class="form-control" type="text" name="qualification" placeholder="Highest Qualification">
+                                        <input class="form-control" type="text" name="qualification"
+                                            placeholder="Highest Qualification" required>
                                         <label for="qualification">Highest Qualification</label>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="gender">Gender</label>
                                         <div>
-                                            <input type="radio" name="gender" value="male"> <span>Male</span>
-                                            <input type="radio" name="gender" value="female"> <span>Female</span>
-                                            <input type="radio" name="gender" value="other"> <span>Other</span>
+                                            <input type="radio" name="gender" value="male" > <span>Male</span>
+                                            <input type="radio" name="gender" value="female" > <span>Female</span>
+                                            <input type="radio" name="gender" value="other" > <span>Other</span>
                                         </div>
                                     </div>
                                     <div class="form-floating mt-3">
-                                        <input class="form-control" type="date" name="date_of_birth" placeholder="Date of Birth">
+                                        <input class="form-control" type="date" name="date_of_birth"
+                                            placeholder="Date of Birth" required>
                                         <label for="date_of_birth">Date of Birth</label>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">Working?</label>
-                                        <select class="form-control" name="working" id="working">
+                                        <select class="form-control" name="working" id="working" required>
                                             <option value="0">No</option>
                                             <option value="1">Yes</option>
                                         </select>
                                     </div>
                                     <div id="form_company" class="form-floating mt-3">
-                                        <input class="form-control" type="text" name="company" placeholder="Company Name">
+                                        <input class="form-control" type="text" name="company"
+                                            placeholder="Company Name" required>
                                         <label for="company">Company Name</label>
                                     </div>
                                     <div id="form_position" class="form-floating mt-3">
-                                        <input class="form-control" type="text" name="position" placeholder="Position">
+                                        <input class="form-control" type="text" name="position" placeholder="Position" required>
                                         <label for="position">Position</label>
                                     </div>
                                     <div id="form_experience" class="form-floating mt-3">
-                                        <input class="form-control" type="number" name="experience" placeholder="Experience">
+                                        <input class="form-control" type="number" name="experience"
+                                            placeholder="Experience" required>
                                         <label for="experience">Experience</label>
                                     </div>
                                     <div class="form-group mt-3">
-                                        <label for="image">Photo (<span class="text-danger">Passport size photo</span>)</label>
-                                        <input class="form-control" type="file" name="image" placeholder="Photo">
+                                        <label for="image">Photo (<span class="text-danger">Passport size
+                                                photo</span>)</label>
+                                        <input class="form-control" type="file" name="image" placeholder="Photo" required>
                                     </div>
                                     <div class="form-group mt-3">
-                                        <label for="id_proof">Id Proof (<span class="text-danger">Any goverment id</span>)</label>
-                                        <input class="form-control" type="file" name="id_proof" placeholder="Id Proof">
+                                        <label for="id_proof">Id Proof (<span class="text-danger">Any goverment
+                                                id</span>)</label>
+                                        <input class="form-control" type="file" name="id_proof" placeholder="Id Proof" required>
                                     </div>
                                 </div>
                             </div>
@@ -94,13 +100,13 @@
                                                 <label for="category_id">Select a Category</label>
                                                 <select class="form-control" name="category_id" id="categoryDropdown">
                                                     @foreach ($categories as $category)
-                                                        <option value="{{$category->id}}">{{$category->title}}</option>
+                                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group mt-3">
                                                 <label for="category_id">Select Services</label>
-                                                <select class="form-control" name="service_id[]" id="serviceDropdown" multiple></select>
+                                                <select class="form-control" name="service_id[]" id="serviceDropdown" multiple ></select>
                                             </div>
                                         </div>
                                     </div>
@@ -113,11 +119,12 @@
                                             <h3 class="h3 text-secondary mb-3">Contact Details</h3>
                                             <div class="form-floating">
                                                 <input class="form-control" type="text" name="mobile"
-                                                    placeholder="Mobile Number">
+                                                    placeholder="Mobile Number" required>
                                                 <label for="contact">Mobile Number</label>
                                             </div>
                                             <div class="form-floating mt-3">
-                                                <input class="form-control" type="text" name="altphone" placeholder="Alternate Phone Number">
+                                                <input class="form-control" type="text" name="altphone"
+                                                    placeholder="Alternate Phone Number" required>
                                                 <label for="altphone">Alternate Phone Number</label>
                                             </div>
                                             <div class="row">
@@ -126,7 +133,8 @@
                                                         <label for="state">State</label>
                                                         <select name="state_code" id="state" class="form-control">
                                                             @foreach ($states as $state)
-                                                                <option value="{{ $state->state_code }}">{{ $state->state_name }}
+                                                                <option value="{{ $state->state_code }}">
+                                                                    {{ $state->state_name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -135,7 +143,7 @@
                                                 <div class="col-sm-12 col-md-6">
                                                     <div class="form-group mt-3">
                                                         <label for="district">District</label>
-                                                        <select name="district_code" id="district" class="form-control">
+                                                        <select name="district_code" id="district" class="form-control" required>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -144,20 +152,20 @@
                                                 <div class="col-sm-12 col-md-6">
                                                     <div class="form-group mt-3">
                                                         <label for="city">City</label>
-                                                        <select name="city_code" id="city" class="form-control">
+                                                        <select name="city_code" id="city" class="form-control" required>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-6">
                                                     <div class="form-group mt-3">
                                                         <label for="village">Village</label>
-                                                        <select name="village_code" id="village" class="form-control">
+                                                        <select name="village_code" id="village" class="form-control" required>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-floating mt-3">
-                                                <textarea class="form-control" type="text" name="address" placeholder="Address" style="height: 100px;"></textarea>
+                                                <textarea class="form-control" type="text" name="address" placeholder="Address" style="height: 100px;" required></textarea>
                                                 <label for="address">Address</label>
                                             </div>
                                         </div>
@@ -168,9 +176,30 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-12 mb-3">
-                            <input type="checkbox" name="agree"> <span>By checking, you are confirming that you have read, understood and agree to OnDoorService <a href="#">terms and conditions</a></span>
+                            <input type="checkbox" name="agree" required> <span>By checking, you are confirming that you have
+                                read, understood and agree to OnDoorService <a href="#">terms and
+                                    conditions</a></span>
                         </div>
-                        <div class="col-2">
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="captcha" placeholder="Captcha" required>
+                                    <label for="captcha">Captcha</label>
+                                    @error('captcha')
+                                        <span class="text-danger">
+                                            *{{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="captcha-image">{!! Captcha::img() !!}</span>
+                                {{-- <button type="button" id="captchaRefresh" class="btn btn-light"><i class="fas fa-sync"></i></button> --}}
+                            </div>
+                        </div>
+                        
+                        <div class="col-2 mt-3">
                             <button type="submit" class="btn btn-primary px-4 py-2">Submit</button>
                         </div>
                     </div>
@@ -183,23 +212,37 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
+
+            //     $('#captchaRefresh').click(function(){
+            //     var captchaImg = $('.captcha-image').find('img');
+            //     $.ajax({
+            //         type: 'GET',
+            //         url: '/refresh-captcha',
+            //         success: function(data){
+            //             captchaImg.attr('src', data.captcha);
+            //         },
+            //         error: function(error){
+            //             console.log(error);
+            //         }
+            //     });
+            // });
+
             var isWorking = $('#working');
             var company = $('#form_company');
             var position = $('#form_position');
             var experience = $('#form_experience');
 
             toggleFormGroups();
-            isWorking.change(function(){
+            isWorking.change(function() {
                 toggleFormGroups();
             });
 
-            function toggleFormGroups(){
-                if(isWorking.val() == "0"){
+            function toggleFormGroups() {
+                if (isWorking.val() == "0") {
                     company.hide();
                     position.hide();
                     experience.hide();
-                }
-                else{
+                } else {
                     company.show();
                     position.show();
                     experience.show();
@@ -216,14 +259,15 @@
                 populateServices(categoryId);
             });
 
-            function populateServices(categoryId){
+            function populateServices(categoryId) {
                 $.ajax({
                     url: 'http://localhost:8000/api/service/' + categoryId,
                     type: 'GET',
                     success: function(response) {
                         var options = '<option value="">Select a Service</option>';
                         $.each(response, function(key, value) {
-                            options += '<option value="' + value.id + '">' + value.title + '</option>';
+                            options += '<option value="' + value.id + '">' + value.title +
+                                '</option>';
                             service.html(options);
                         });
                     },
@@ -283,6 +327,7 @@
                         '</option>');
                 });
             }
+
         });
     </script>
 @endsection

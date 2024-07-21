@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'captcha' => ['required', 'captcha'],
         ]);
     }
 
@@ -97,5 +98,9 @@ class RegisterController extends Controller
         {
             return redirect("/freelancer/register");
         }
+    }
+    public function get_new_captcha()
+    {
+        return response()->json(['captcha' => captcha_img()]);
     }
 }

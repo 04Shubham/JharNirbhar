@@ -2,10 +2,10 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
+        {{-- <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">JN Admin <sup>2</sup></div>
+        </div> --}}
+        <div class="sidebar-brand-text mx-3">JharNirbhar<sup></sup></div>
     </a>
 
     <!-- Divider -->
@@ -13,30 +13,37 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="{{url('/admin/dashboard')}}">
+        <a class="nav-link" href="{{ url('/admin/dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-    
+
     <!-- Nav Item - Customer Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="{{url('/admin/customer')}}">
+        <a class="nav-link" href="{{ url('/admin/customer') }}">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Customer</span></a>
+            <span>Service Booked</span></a>
     </li>
-     <li class="nav-item">
-         <a class="nav-link" href="{{url('/admin/freelancer')}}">
-             <i class="fas fa-fw fa-folder"></i>
-             <span>FreeLancer</span></a>
-     </li>
- 
-   
-   
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/contact') }}">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Contact Query</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/freelancer') }}">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>FreeLancer</span></a>
+    </li>
+
+
+
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    {{-- <hr class="sidebar-divider">
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -54,29 +61,29 @@
         <a class="nav-link" href="{{url('/admin/provider')}}">
             <i class="fas fa-fw fa-folder"></i>
             <span>Job Provider</span></a>
+    </li> --}}
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Interface
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/category') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Category</span></a>
     </li>
 
-     <!-- Divider -->
-     <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/service') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Service</span></a>
+    </li>
 
-     <!-- Heading -->
-     <div class="sidebar-heading">
-         Interface
-     </div>
- 
-     <li class="nav-item">
-         <a class="nav-link" href="{{url('/admin/category')}}">
-             <i class="fas fa-fw fa-chart-area"></i>
-             <span>Category</span></a>
-     </li>
- 
-     <li class="nav-item">
-         <a class="nav-link" href="{{url('/admin/service')}}">
-             <i class="fas fa-fw fa-chart-area"></i>
-             <span>Service</span></a>
-     </li>
- 
-    
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

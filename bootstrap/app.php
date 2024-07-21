@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             // 'user-access' => \App\Http\Middleware\MultiAuthUser::class,
             'email-verify' => \App\Http\Middleware\EmailVerificationMiddleware::class,
+            'Captcha' => Mews\Captcha\Facades\Captcha::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
